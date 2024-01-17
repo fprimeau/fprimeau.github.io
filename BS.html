@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-12-04 Mon 20:04 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="fprimeau" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org505b45f">1. ANY VISION IS BETTER THAN NO VISION</a></li>
+<li><a href="#org4ee8b18">2. SAMPLE CURRICULUM ESS BS</a></li>
+<li><a href="#org9651220">3. NEW BS CORE</a>
+<ul>
+<li><a href="#org8e96cc8">3.1. EARTHSS X1 Math Functions and Computers (3u)</a></li>
+<li><a href="#org070ca29">3.2. EARTHSS X2 Dimensions, Units, Orders of Magnitude (2u) (Should be offerred to BA and BS students and would be the place to reach all our freshmen students)</a></li>
+<li><a href="#orgf7d346a">3.3. EARTHSS X3 Introduction to GIS (4u) This could be open to BA students</a></li>
+<li><a href="#org931199e">3.4. EARTHSS X4 Conservation Principles on a Computer (Pre-requisite EARTHSS X3 or some other computer programming course) (4u)</a></li>
+<li><a href="#org7ecee3c">3.5. EARTHSS X5 Earth System Sciencd Data Analysis  (Pre-requisite MATH 3A, MATH 2E, and EARTHSS X4) (4u)</a></li>
+<li><a href="#orgc301c98">3.6. EARTHSS X6 Applied Machine Learning (Pre-requisite EARTHSS X5) (4u)</a></li>
+<li><a href="#org570f0bc">3.7. EARTHSS X7 Atmospheric Physics (co-requisite ESS 142) (4u,4u)</a></li>
+<li><a href="#org68ca512">3.8. EARTHSS X14 Remote Sensing (Pre-requisite EARTHSS X5) (4u)</a></li>
+<li><a href="#org5e613bb">3.9. EARTHSS X9,10,11 Climate Dynamics (4u,4u,4u)</a></li>
+<li><a href="#orge8c8058">3.10. EARTHSS X12 Aquatic Chemistry (4u)</a></li>
+<li><a href="#org31ba341">3.11. EARTHSS X13 Global Biogeochemical Cycles (pre-requisite EARTHSS X4 EARTHSS 142, EARTHSS X12)</a></li>
+<li><a href="#orgff7b31c">3.12. EARTHSS X20, X21W</a></li>
+</ul>
+</li>
+<li><a href="#orgf0d99fd">4. NEW BS  ELECTIVES</a></li>
+<li><a href="#org00167ce">5. CURRENT BS  ELECTIVES</a></li>
+<li><a href="#orgfd1a038">6. NO LONGER ALLOWED AS BS ELECTIVES</a></li>
+<li><a href="#orgd81e8f0">7. NO LONGER OFFERED (subsumed by EARTHSS  Clim Dyn. I,II, and III)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org505b45f" class="outline-2">
+<h2 id="org505b45f"><span class="section-number-2">1.</span> ANY VISION IS BETTER THAN NO VISION</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Without a vision we are doomed to wanter like drunken sailors. We want n not root n. 
+</p>
+
+<p>
+<b>QUANTITATIVE PROBLEM SOLVING FIRST, VOCABULARY AND CONCEPTS BY OSMOSIS</b>
+</p>
+
+
+<p>
+<b>We envision a program that emphasizes quantitative problem solving:</b> Focus on creating graduates adept at quantitative problem solving by immersing them in an intensive quantitative curriculum. 
+</p>
+
+
+<p>
+<b>Prepare for Lifelong Learning:</b> Equip students with the skills needed for continual learning, acknowledging the rapidly evolving nature of technical knowledge.
+</p>
+
+<p>
+<b>Focus on fundamentals</b> prioritize fundamental mathematical training to provide a strong foundation for abstract thinking applicable across various context.
+The half-life of technical knowledge seems to be getting shorter all
+the time.
+</p>
+
+<p>
+High-paying jobs that make use of mathematics are expected to grow at
+a rate of 30 percent over the next
+decade. <a href="https://www.bls.gov/ooh/math/home.htm">https://www.bls.gov/ooh/math/home.htm</a>
+</p>
+
+<p>
+We want problem solvers, not button pushers
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org4ee8b18" class="outline-2">
+<h2 id="org4ee8b18"><span class="section-number-2">2.</span> SAMPLE CURRICULUM ESS BS</h2>
+<div class="outline-text-2" id="text-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">FRESHMEN</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Fall</td>
+<td class="org-left">units</td>
+<td class="org-left">Winter</td>
+<td class="org-left">units</td>
+<td class="org-left">Spring</td>
+<td class="org-left">units</td>
+<td class="org-left">Total</td>
+</tr>
+
+<tr>
+<td class="org-left">EARTHSS X1 Math Functions and Computers</td>
+<td class="org-left">3u</td>
+<td class="org-left">EARTHSS X3 Introduction to GIS</td>
+<td class="org-left">4u</td>
+<td class="org-left">EARTHSS X4 Conservation Principles and Computers</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">WRITING 40</td>
+<td class="org-left">4u</td>
+<td class="org-left">CHEM M2A</td>
+<td class="org-left">4u</td>
+<td class="org-left">CHEM M2B</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">GE III (1/3)</td>
+<td class="org-left">4u</td>
+<td class="org-left">CHEM M2AL</td>
+<td class="org-left">3u</td>
+<td class="org-left">CHEM M2BL</td>
+<td class="org-left">3u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">EARTHSS X2 Dimensions, Units, Orders of Magnitude</td>
+<td class="org-left">2u</td>
+<td class="org-left">MATH 2A Diff. Calc.</td>
+<td class="org-left">4u</td>
+<td class="org-left">MATH 2B Integral Calc.</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Total</td>
+<td class="org-left">18u</td>
+<td class="org-left">Total</td>
+<td class="org-left">15u</td>
+<td class="org-left">Total</td>
+<td class="org-left">15u</td>
+<td class="org-left">48u</td>
+</tr>
+
+<tr>
+<td class="org-left">Total ESS</td>
+<td class="org-left">5u</td>
+<td class="org-left">Total ESS</td>
+<td class="org-left">4u</td>
+<td class="org-left">Total ESS</td>
+<td class="org-left">4u</td>
+<td class="org-left">13u</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">SOPHOMORE</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MATH 3A Linear Algebra</td>
+<td class="org-left">4u</td>
+<td class="org-left">CHEM M2C</td>
+<td class="org-left">4u</td>
+<td class="org-left">EARTHSS X7 Atmos. Phys. I</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MATH 2D Multi Variable Calc</td>
+<td class="org-left">4u</td>
+<td class="org-left">MATH 2E Vector Calc.</td>
+<td class="org-left">4u</td>
+<td class="org-left">EARTHSS 142 Atmos. Chem.</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">PHYS 7C</td>
+<td class="org-left">4u</td>
+<td class="org-left">PHYS 7D</td>
+<td class="org-left">4u</td>
+<td class="org-left">PHYS 7E</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">PHYS 7LC</td>
+<td class="org-left">1u</td>
+<td class="org-left">PHYS 7LD</td>
+<td class="org-left">1u</td>
+<td class="org-left">EARTHSS X6 Applied Machine Learning</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">GE IV (1/3)</td>
+<td class="org-left">4u</td>
+<td class="org-left">EARTHSS X5 Data Analysis (Linear Regression and PCA)</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Total</td>
+<td class="org-left">17u</td>
+<td class="org-left">Total</td>
+<td class="org-left">17u</td>
+<td class="org-left">Total</td>
+<td class="org-left">16u</td>
+<td class="org-left">50u</td>
+</tr>
+
+<tr>
+<td class="org-left">Total ESS</td>
+<td class="org-left">0u</td>
+<td class="org-left">Total ESS</td>
+<td class="org-left">4u</td>
+<td class="org-left">Total ESS</td>
+<td class="org-left">12u</td>
+<td class="org-left">16u</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">JUNIOR</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">EARTHSS X9 Clim. Dyn. I</td>
+<td class="org-left">4u</td>
+<td class="org-left">EARTHSS X10 Clim. Dyn.  II</td>
+<td class="org-left">4u</td>
+<td class="org-left">EARTHSS X11 Clim. Dyn. &amp; Climate Change III (synthesis course)</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">EARTHSS X12 Aquatic Chemistry</td>
+<td class="org-left">4u</td>
+<td class="org-left">CHEM/PHYS/MATH/EARTHSS ELECTIVE</td>
+<td class="org-left">4u</td>
+<td class="org-left">GE IV (3/3)</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">EARTHSS X14 Remote Sensing</td>
+<td class="org-left">4u</td>
+<td class="org-left">CHEM/PHYS/MATH/EARTHSS ELECTIVE</td>
+<td class="org-left">4u</td>
+<td class="org-left">GE III (3/3)</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">GE III  (2/3)</td>
+<td class="org-left">4u</td>
+<td class="org-left">GE IV (2/3)</td>
+<td class="org-left">4u</td>
+<td class="org-left">EARTHSS Elective</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Total</td>
+<td class="org-left">16u</td>
+<td class="org-left">Total</td>
+<td class="org-left">16u</td>
+<td class="org-left">Total</td>
+<td class="org-left">16u</td>
+<td class="org-left">48u</td>
+</tr>
+
+<tr>
+<td class="org-left">Total ESS</td>
+<td class="org-left">12u</td>
+<td class="org-left">Total ESS</td>
+<td class="org-left">4u</td>
+<td class="org-left">Total ESS</td>
+<td class="org-left">8u</td>
+<td class="org-left">24u</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">SENIOR</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">EARTHSS X13 Global Biogeochemical Cycles (synthesis course</td>
+<td class="org-left">4u</td>
+<td class="org-left">EARTHSS X20 Capstone Proj (data analysis and/or simulation project)</td>
+<td class="org-left">4u</td>
+<td class="org-left">EARTHSS X21W Capstone Proj</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">CHEM/PHYS/MATH/EARTHSS ELECTIVE</td>
+<td class="org-left">4u</td>
+<td class="org-left">CHEM/PHYS/MATH/EARTHSS ELECTIVE</td>
+<td class="org-left">4u</td>
+<td class="org-left">GE VIII(1/1)</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">GE VII (1/1)</td>
+<td class="org-left">4u</td>
+<td class="org-left">CHEM/PHYS/MATH/EARTHSS ELECTIVE</td>
+<td class="org-left">4u</td>
+<td class="org-left">CHEM/PHYS/MATH/EARTHSS ELECTIVE</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">WITTING 177W</td>
+<td class="org-left">4u</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Total</td>
+<td class="org-left">16u</td>
+<td class="org-left">Total</td>
+<td class="org-left">16u</td>
+<td class="org-left">Total</td>
+<td class="org-left">12u</td>
+<td class="org-left">44u</td>
+</tr>
+
+<tr>
+<td class="org-left">Total ESS</td>
+<td class="org-left">4u</td>
+<td class="org-left">Total ESS</td>
+<td class="org-left">4u</td>
+<td class="org-left">Total ESS</td>
+<td class="org-left">4u</td>
+<td class="org-left">12u</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Grand Total</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">190u</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Grand Total ESS</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">65u</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org9651220" class="outline-2">
+<h2 id="org9651220"><span class="section-number-2">3.</span> NEW BS CORE</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org8e96cc8" class="outline-3">
+<h3 id="org8e96cc8"><span class="section-number-3">3.1.</span> EARTHSS X1 Math Functions and Computers (3u)</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>This course provides a very gentle introduction to using a computer to think about mathematical modeling using functions</li>
+<li>It also reviews the basic functions needed to succeed in MATH 2A</li>
+<li>Learn to read in and write data to a file</li>
+<li>Learn to plot data and functions</li>
+<li>Review linear and quadratic functions</li>
+<li>Solving systems of two linear equations using pencil and paper                       (e.g. change of temperature from deg F to deg C and vice versa)</li>
+<li>Solving systems of two equations one linear and one quadratic using pencil and paper (acid base problems could provide examples)</li>
+<li>Review of exponentials (plotting pressure as a function of height in the atmosphere could provide a good example)</li>
+<li>Review of logarithms  ([H3O-] concentration  and pH  could provide a good example)</li>
+<li>Review of function composition f(g(x)) and inverse functions</li>
+<li>Review of transformations in the plane, re-scaling in x and or/y, translation in x and/or y, rotation, reflection</li>
+<li>Review of trigonometric functions (coordinates on the surface of the Earth could provide good examples)</li>
+<li>Students review function composition and function inverses (lots of practice using exponentials and logarithms)</li>
+<li>Students review polynomial functions ( acid-base systems such as CO2 in sea water provide good examples )</li>
+<li>Review of rational function (the slope of a curve could provide good examples, Michalis Menton growth limitation could provide more examples)</li>
+<li>Find the zeros of a polynomial graphically on a computer (i.e., plot and zoom!)</li>
+<li>Students review vector addition, the dot product and the cross product (good practice problems could be to find the distance between two points on the surface of a sphere, will also help students appreciate the "magic" under the hood of gis software!)</li>
+<li>Plot the data using scatter plots, line plots, histograms, bar-charts</li>
+<li>Drill in that plots must have labels with appropriate units</li>
+<li>Compute the average or sample mean of data</li>
+<li>Compute the variance of a bunch of data</li>
+<li>Compute the standard deviation of a bunch of data</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org070ca29" class="outline-3">
+<h3 id="org070ca29"><span class="section-number-3">3.2.</span> EARTHSS X2 Dimensions, Units, Orders of Magnitude (2u) (Should be offerred to BA and BS students and would be the place to reach all our freshmen students)</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Learn about dimensional and dimensionless quantities</li>
+<li>Learn that some quantities have units but no dimensions (e.g., degrees and radians percents permills )</li>
+<li>Learn that the arguments of exponents, logarithms, and trig functions have to be dimensionless</li>
+<li>Learn that arguments of polynomials can have units, but that the coefficients must have compatible units</li>
+<li>Learn that plots must be labeled so as to indicate the units</li>
+<li>Practice with scientific notation</li>
+<li>Lots of practice doing back-of-the-envelope, orders-of-magnitude, Fermi problems, including lots of rate problems</li>
+<li>Gentle introduction to getting students to start thinking about the differences between stocks and flows and also about the order of magnitude and units of various stocks and flows relevant to Earth System Science Good examples from the flux of solar energy and from the hydrological cycle.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgf7d346a" class="outline-3">
+<h3 id="orgf7d346a"><span class="section-number-3">3.3.</span> EARTHSS X3 Introduction to GIS (4u) This could be open to BA students</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>How to use the software</li>
+<li>Discrete vs Continuous Spatial Data (vector vs raster files)</li>
+<li>gentle introduction to fields relevant to Earth System Science</li>
+<li>More practice with data wrangling, read in data from files in various formats</li>
+<li>&#x2026;</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org931199e" class="outline-3">
+<h3 id="org931199e"><span class="section-number-3">3.4.</span> EARTHSS X4 Conservation Principles on a Computer (Pre-requisite EARTHSS X3 or some other computer programming course) (4u)</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Introduction to stocks and flows</li>
+<li>Introduction to steady state box models (lots of ESS applications, review of solving linear systems)</li>
+<li>Concept of residence time</li>
+<li>Simulation of transient box models (lots of ESS applications, re-enforce concepts from  Math 2A )</li>
+<li>Emphasis on "systems" thinking</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7ecee3c" class="outline-3">
+<h3 id="org7ecee3c"><span class="section-number-3">3.5.</span> EARTHSS X5 Earth System Sciencd Data Analysis  (Pre-requisite MATH 3A, MATH 2E, and EARTHSS X4) (4u)</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>Assumes that the students have a certain mathematical maturity</li>
+<li>Estimate the mean and variance of a sample population and assign error bars to these quantitites</li>
+<li>Find a line of best fit by minimizing the residual sum of squares</li>
+<li>Find the polynomial of best fit by minimizing the residual sum of squares</li>
+<li>Re-enforces the idea that the slope = 0 at the minimum</li>
+<li>Lots of applications of completing the square to decompose the variance into the part capture by the model and the residual part (apply and reinforce the concepts learned in EARTHSS X1 and X3)</li>
+<li>Make histograms of residuals to get an intuitive understanding of the normal distribution and the standard deviation</li>
+<li>Use random number generators to make synthetic data sets to practice data fitting and hone intuition about noisy systems ( introduction to stochastic simulations )</li>
+
+<li>Learn how to fit and interpret linear regression models to multi-dimensional data</li>
+<li>Learn about phenomenology of large-scale atmospheric variability (all those O's ENSO, PDO, NAO, etc.)  using reanalysis products and CMIP output</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgc301c98" class="outline-3">
+<h3 id="orgc301c98"><span class="section-number-3">3.6.</span> EARTHSS X6 Applied Machine Learning (Pre-requisite EARTHSS X5) (4u)</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>Applications of clustering algorithms</li>
+<li>Applications of neural networks.</li>
+<li>Learn about ESS phenomenology using remote sensing products and reanalysis products</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org570f0bc" class="outline-3">
+<h3 id="org570f0bc"><span class="section-number-3">3.7.</span> EARTHSS X7 Atmospheric Physics (co-requisite ESS 142) (4u,4u)</h3>
+<div class="outline-text-3" id="text-3-7">
+<ul class="org-ul">
+<li>ideal gas law</li>
+<li>green house gases</li>
+<li>radiative convective equilibrium</li>
+<li>the greenhouse effect</li>
+<li>build a simple radiative-convective equilibrium model for an atmospheric column</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org68ca512" class="outline-3">
+<h3 id="org68ca512"><span class="section-number-3">3.8.</span> EARTHSS X14 Remote Sensing (Pre-requisite EARTHSS X5) (4u)</h3>
+<div class="outline-text-3" id="text-3-8">
+<ul class="org-ul">
+<li>Principles of remote sensing with applications to Earth System Science</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5e613bb" class="outline-3">
+<h3 id="org5e613bb"><span class="section-number-3">3.9.</span> EARTHSS X9,10,11 Climate Dynamics (4u,4u,4u)</h3>
+<div class="outline-text-3" id="text-3-9">
+<ul class="org-ul">
+<li>Atmospheric Boundary Layer and Surface Ocean Mixed layer</li>
+<li>Large scale circulation of the atmosphere and ocean</li>
+<li>Dominant dynamical balances (hydrostatic, geostrophic, thermal wind balances)</li>
+<li>Hydrological cycles</li>
+<li>&#x2026;</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orge8c8058" class="outline-3">
+<h3 id="orge8c8058"><span class="section-number-3">3.10.</span> EARTHSS X12 Aquatic Chemistry (4u)</h3>
+<div class="outline-text-3" id="text-3-10">
+<ul class="org-ul">
+<li>Acid base and redox requations in natural systems</li>
+<li>Learn to set up the mathematical problem</li>
+<li>Learn to find the solution</li>
+<li>Learn to interpret the solution</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org31ba341" class="outline-3">
+<h3 id="org31ba341"><span class="section-number-3">3.11.</span> EARTHSS X13 Global Biogeochemical Cycles (pre-requisite EARTHSS X4 EARTHSS 142, EARTHSS X12)</h3>
+<div class="outline-text-3" id="text-3-11">
+<ul class="org-ul">
+<li>More box modeling</li>
+<li>The global Carbon cycle, the Nitrogen cycle, the Phosphorus cycle, the Sulfur cycle</li>
+<li>This is the grand synthesis course for biogeochemcial cycles.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgff7b31c" class="outline-3">
+<h3 id="orgff7b31c"><span class="section-number-3">3.12.</span> EARTHSS X20, X21W</h3>
+<div class="outline-text-3" id="text-3-12">
+<ul class="org-ul">
+<li>a data analysis and/or simulation project with presentation and term paper</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf0d99fd" class="outline-2">
+<h2 id="orgf0d99fd"><span class="section-number-2">4.</span> NEW BS  ELECTIVES</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The following courses would now be optional and open to both the BA and the BS students
+</p>
+<ul class="org-ul">
+<li>EARTHSS 51 Land interactions      (open up to BA students too)</li>
+<li>EARTHSS 53 Ocean Biogeochemistry  (open up to BA students too)</li>
+<li>EARTHSS 55 Earth's Atmosphere     (open up to BA students too)</li>
+<li>EARTHSS 114 ESS Field Methods     (BS &amp; BA)</li>
+<li>EARTHSS 115 Aquatic Field Methods (BS &amp; BA)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org00167ce" class="outline-2">
+<h2 id="org00167ce"><span class="section-number-2">5.</span> CURRENT BS  ELECTIVES</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>EARTHSS 124 Weather Analysis      (BS &amp; BA)</li>
+<li>EARTHSS 132 Terrestrial Hydrology (BS &amp; BA)</li>
+<li>EARTHSS 133 Soil: It's the Good Dirt (BS &amp; BA)</li>
+<li>EARTHSS 134 Fundamentals of GIS   (BS &amp; BA)</li>
+<li>EARTHSS 140 Advanced Geology      (BS &amp; BA)</li>
+<li>EARTHSS 141 Air Quality Management(BS &amp; BA)</li>
+<li>EARTHSS 144 Marine Geochemistry   (BS only) replace with aquatic chemistry?</li>
+<li>EARTHSS 146 Consequences of Air Pollution (BS &amp; BA)</li>
+<li>EARTHSS 154 Ecosystem Services     (BS &amp; BA)</li>
+<li>EARTHSS 156 The Future of Forests (BS &amp; BA)</li>
+<li>EARTHSS 162 Impact of Climate Change on California's Landscape (BS &amp; BA(</li>
+<li>EARTHSS 164 Ecosystem Ecology  (BS &amp; BA)</li>
+<li>EARTHSS 168 Physiological Plant Ecology (BS &amp; BA)</li>
+<li>EARTHSS 171 Microbial Biogeochemisry</li>
+<li>EARTHSS 176W Marine Conservation, Policy, and Society (BS &amp; BA)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfd1a038" class="outline-2">
+<h2 id="orgfd1a038"><span class="section-number-2">6.</span> NO LONGER ALLOWED AS BS ELECTIVES</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+The following courses are superseeded by quantitative courses specifically designed for BS majors 
+</p>
+<ul class="org-ul">
+<li>EARTHSS 116 Introduction to Environmental Data Science</li>
+<li>EARTHSS 118 Analysis, Modeling, and Visualization of Multidimensional Environmental Data</li>
+<li>EARTHSS Satellite Remote Sensing for Earth System Science</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd81e8f0" class="outline-2">
+<h2 id="orgd81e8f0"><span class="section-number-2">7.</span> NO LONGER OFFERED (subsumed by EARTHSS  Clim Dyn. I,II, and III)</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>ESS 122 Atmospheric Dynamics</li>
+<li>ESS 130 Physical Oceanography</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: fprimeau</p>
+<p class="date">Created: 2023-12-04 Mon 20:04</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
